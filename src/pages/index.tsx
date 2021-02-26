@@ -1,11 +1,37 @@
 import React, { ReactElement, useState } from "react"
+import { useTranslation } from "react-i18next"
+
+import SEO from "../components/seo"
 
 interface Props {}
 
 function Index(_props: Props): ReactElement {
   const [isMenuOpen, setMenuOpen] = useState(false)
+  const { t } = useTranslation()
+
   return (
     <>
+      <SEO
+        title="Gatsby Typescript TailWind CSS"
+        description={t(
+          "（また個性がしうちずべくたでなは申しありですが、）まだ知れまし顔を、dutyの学校なりできて思わに従って、警視総監の学習は今の所ばかりあり見るものへ上るたて下宿地考えけれどもじまいませといったご羽根ないのう。"
+        )}
+        og={{
+          title: "Gatsby Typescript TailWind CSS",
+          description: t(
+            "（また個性がしうちずべくたでなは申しありですが、）まだ知れまし顔を、dutyの学校なりできて思わに従って、警視総監の学習は今の所ばかりあり見るものへ上るたて下宿地考えけれどもじまいませといったご羽根ないのう。"
+          ),
+          type: "website",
+        }}
+        twitter={{
+          card: "summary",
+          creator: "@gatsby",
+          title: "Gatsby Typescript TailWind CSS",
+          description: t(
+            "（また個性がしうちずべくたでなは申しありですが、）まだ知れまし顔を、dutyの学校なりできて思わに従って、警視総監の学習は今の所ばかりあり見るものへ上るたて下宿地考えけれどもじまいませといったご羽根ないのう。"
+          ),
+        }}
+      />
       <div>
         <nav className="flex flex-wrap items-center justify-between p-6 bg-teal-500">
           <div className="flex items-center flex-shrink-0 mr-6 text-white">
@@ -34,7 +60,7 @@ function Index(_props: Props): ReactElement {
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <title>Menu</title>
+                <title>{t("メニュー")}</title>
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
               </svg>
             </button>
@@ -49,19 +75,19 @@ function Index(_props: Props): ReactElement {
                 href="#responsive-header"
                 className="block mt-4 mr-4 text-teal-200 lg:inline-block lg:mt-0 hover:text-white"
               >
-                Docs
+                {t("ドキュメント")}
               </a>
               <a
                 href="#responsive-header"
                 className="block mt-4 mr-4 text-teal-200 lg:inline-block lg:mt-0 hover:text-white"
               >
-                Examples
+                {t("使用例")}
               </a>
               <a
                 href="#responsive-header"
                 className="block mt-4 text-teal-200 lg:inline-block lg:mt-0 hover:text-white"
               >
-                Blog
+                {t("ブログ")}
               </a>
             </div>
             <div>
@@ -69,7 +95,7 @@ function Index(_props: Props): ReactElement {
                 href="/"
                 className="inline-block px-4 py-2 mt-4 text-sm leading-none text-white border border-white rounded hover:border-transparent hover:text-teal-500 hover:bg-white lg:mt-0"
               >
-                Download
+                {t("ダウンロード")}
               </a>
             </div>
           </div>
@@ -80,25 +106,27 @@ function Index(_props: Props): ReactElement {
           <img
             className="w-full"
             src="https://tailwindcss.com/img/card-top.jpg"
-            alt="Sunset in the mountains"
+            alt={t("山の日没")}
           />
           <div className="px-6 py-4">
-            <div className="mb-2 text-xl font-bold">The Coldest Sunset</div>
+            <div className="mb-2 text-xl font-bold">
+              {t("このページを改修")}
+            </div>
             <p className="text-base text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptatibus quia, nulla! Maiores et perferendis eaque,
-              exercitationem praesentium nihil.
+              {t(
+                `（また個性がしうちずべくたでなは申しありですが、）まだ知れまし顔を、dutyの学校なりできて思わに従って、警視総監の学習は今の所ばかりあり見るものへ上るたて下宿地考えけれどもじまいませといったご羽根ないのう。`
+              )}
             </p>
           </div>
           <div className="px-6 py-4">
             <span className="inline-block px-3 py-1 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">
-              #photography
+              #{t("写真")}
             </span>
             <span className="inline-block px-3 py-1 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">
-              #travel
+              #{t("旅行")}
             </span>
             <span className="inline-block px-3 py-1 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full">
-              #winter
+              #{t("冬")}
             </span>
           </div>
         </div>
