@@ -5,6 +5,8 @@
   "version": "0.1.247",
   "author": "Florentin Eckl <ecklf@icloud.com>",
   "dependencies": {
+    "aws-amplify": "^3.3.21",
+    "aws-amplify-react": "^4.2.25",
     "dotenv": "^8.2.0",
     "gatsby-source-graphql": "^2.14.0",
     "react": "17.0.1",
