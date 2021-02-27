@@ -3,6 +3,14 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
+const Amplify = require("aws-amplify").default
+const awsExports = require("./src/aws-exports").default
+console.log(awsExports)
+
+// initialize amplify
+Amplify.configure(awsExports)
+
+// i18n
 require("./src/css/index.css")
 const i18nConfig = require("./i18n/config.json")
 const defaultLang = "en"

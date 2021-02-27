@@ -4,13 +4,17 @@
 
 export type CreateTodoInput = {
   id?: string | null,
-  name: string,
+  name?: string | null,
   description?: string | null,
+  createdAt?: string | null,
+  updatedAt?: string | null,
 };
 
 export type ModelTodoConditionInput = {
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
   and?: Array< ModelTodoConditionInput | null > | null,
   or?: Array< ModelTodoConditionInput | null > | null,
   not?: ModelTodoConditionInput | null,
@@ -60,6 +64,8 @@ export type UpdateTodoInput = {
   id: string,
   name?: string | null,
   description?: string | null,
+  createdAt?: string | null,
+  updatedAt?: string | null,
 };
 
 export type DeleteTodoInput = {
@@ -70,6 +76,8 @@ export type ModelTodoFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
   and?: Array< ModelTodoFilterInput | null > | null,
   or?: Array< ModelTodoFilterInput | null > | null,
   not?: ModelTodoFilterInput | null,
@@ -100,10 +108,10 @@ export type CreateTodoMutation = {
   createTodo:  {
     __typename: "Todo",
     id: string,
-    name: string,
+    name: string | null,
     description: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt: string | null,
+    updatedAt: string | null,
   } | null,
 };
 
@@ -116,10 +124,10 @@ export type UpdateTodoMutation = {
   updateTodo:  {
     __typename: "Todo",
     id: string,
-    name: string,
+    name: string | null,
     description: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt: string | null,
+    updatedAt: string | null,
   } | null,
 };
 
@@ -132,10 +140,10 @@ export type DeleteTodoMutation = {
   deleteTodo:  {
     __typename: "Todo",
     id: string,
-    name: string,
+    name: string | null,
     description: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt: string | null,
+    updatedAt: string | null,
   } | null,
 };
 
@@ -147,10 +155,10 @@ export type GetTodoQuery = {
   getTodo:  {
     __typename: "Todo",
     id: string,
-    name: string,
+    name: string | null,
     description: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt: string | null,
+    updatedAt: string | null,
   } | null,
 };
 
@@ -166,10 +174,10 @@ export type ListTodosQuery = {
     items:  Array< {
       __typename: "Todo",
       id: string,
-      name: string,
+      name: string | null,
       description: string | null,
-      createdAt: string,
-      updatedAt: string,
+      createdAt: string | null,
+      updatedAt: string | null,
     } | null > | null,
     nextToken: string | null,
   } | null,
@@ -179,10 +187,10 @@ export type OnCreateTodoSubscription = {
   onCreateTodo:  {
     __typename: "Todo",
     id: string,
-    name: string,
+    name: string | null,
     description: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt: string | null,
+    updatedAt: string | null,
   } | null,
 };
 
@@ -190,10 +198,10 @@ export type OnUpdateTodoSubscription = {
   onUpdateTodo:  {
     __typename: "Todo",
     id: string,
-    name: string,
+    name: string | null,
     description: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt: string | null,
+    updatedAt: string | null,
   } | null,
 };
 
@@ -201,9 +209,9 @@ export type OnDeleteTodoSubscription = {
   onDeleteTodo:  {
     __typename: "Todo",
     id: string,
-    name: string,
+    name: string | null,
     description: string | null,
-    createdAt: string,
-    updatedAt: string,
+    createdAt: string | null,
+    updatedAt: string | null,
   } | null,
 };
