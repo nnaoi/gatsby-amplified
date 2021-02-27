@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://gatsby-typescript-tailwind.netlify.app/`,
@@ -14,6 +16,17 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-graphql`,
+      options: { 
+        typeName: `Todo`,
+        fieldName: `gatsbyamplified`,
+        url: `${process.env.AWS_APPSYNC_GRAPHQLENDPOINT}`,
+        headers: {
+          'x-api-key': `${process.env.AWS_APPSYNC_APIKEY}`
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
