@@ -11,6 +11,7 @@ import CollapsibleGroupItem, {
   CollapsibleGroupItemProps
 } from "../components/collapsibleGroupItem"
 import { onCreateTodo } from "../graphql/subscriptions"
+import { CreateTodoSubscriptionEvent } from "../types/amplify-types"
 
 export const query = graphql`
 query list {
@@ -26,12 +27,6 @@ query list {
 }`
 
 interface Props { }
-
-type CreateTodoSubscriptionEvent = {
-   value: { 
-     data: OnCreateTodoSubscription 
-    } 
-  };
 
 function SubscriptionTest({ data }: any): ReactElement {
   const initialItems: CollapsibleGroupItemProps[] = 
@@ -67,6 +62,9 @@ function SubscriptionTest({ data }: any): ReactElement {
 
   return (
     <div style={{ fontFamily: 'Roboto' }}>
+      <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+        Subscription with gatsby-source-graphql
+      </h2>
       <div className="flex py-20 h-screen md:-mx-4">
         <div className="w-full my-4">
           {collpsibleGroupItems.map((item: any) => (
