@@ -1,3 +1,11 @@
+## headless_amplify_pull.sh
+Vercel デプロイ際の aws-exports.js を引っ張ってくるためのシェルスクリプト。
+一部変数は、Netlify側で環境変数として宣言している。  
+ビルドコマンドを以下に書き換える。
+```
+npm install -g @aws-amplify/cli && sh headless_amplify_pull.sh && gatsby build
+```
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 <p align="center">
