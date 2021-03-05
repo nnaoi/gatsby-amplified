@@ -26,7 +26,7 @@ module.exports = {
           'x-api-key': `${process.env.AWS_APPSYNC_APIKEY}`
         },
         // gatsby develop 実行時に何秒ごとにappsyncからデータを拾ってくるか。
-        // refetchInterval: 20,
+        refetchInterval: 60,
       },
     },
     {

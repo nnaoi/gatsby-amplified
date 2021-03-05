@@ -6,10 +6,11 @@ import React, {
   useState 
 } from "react"
 import { useTranslation } from "react-i18next"
-import { OnCreateTodoSubscription } from "../API"
+import { CreateTodoMutationVariables, OnCreateTodoSubscription } from "../API"
 import CollapsibleGroupItem, {
   CollapsibleGroupItemProps
 } from "../components/collapsibleGroupItem"
+import { createTodo } from "../graphql/mutations"
 import { onCreateTodo } from "../graphql/subscriptions"
 import { CreateTodoSubscriptionEvent } from "../types/amplify-types"
 
@@ -39,7 +40,35 @@ function SubscriptionTest({ data }: any): ReactElement {
     collpsibleGroupItems, 
     setItems
   ] = useState<CollapsibleGroupItemProps[]>(initialItems);
-  
+  const [input, setInput] = useState("");
+
+  const add = () => {
+    const vars: CreateTodoMutationVariables = {
+      input: {
+        name: input,
+        description: input,
+      }
+    }
+    const client = API.graphql(graphqlOperation(
+      createTodo, vars))
+    if ("then" in client) {
+      client.then(response => {
+        console.log(response);
+        const netlifyBuildHooksUrl = process.env.NETLIFY_BUILD_HOOKS_URL;
+        if (netlifyBuildHooksUrl) {
+          return fetch(netlifyBuildHooksUrl, {
+            method: 'POST',
+          })
+        }
+
+        return Promise.reject("Build hooks url not found.")
+      })
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(e => console.error(e));
+    }
+  }
+
   useEffect(() => {
     const client = API.graphql(
       graphqlOperation(onCreateTodo)
@@ -62,6 +91,20 @@ function SubscriptionTest({ data }: any): ReactElement {
 
   return (
     <div style={{ fontFamily: 'Roboto' }}>
+      <form className="m-4 flex">
+          <input 
+            className="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" 
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button 
+            className="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r"
+            disabled={!input}
+            onClick={add}
+          >
+            Add
+          </button>
+        </form>
       <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
         Subscription with gatsby-source-graphql
       </h2>

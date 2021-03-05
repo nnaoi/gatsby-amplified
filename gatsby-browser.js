@@ -5,7 +5,6 @@
  */
 const Amplify = require("aws-amplify").default
 const awsExports = require("./src/aws-exports").default
-console.log(awsExports)
 
 // initialize amplify
 Amplify.configure(awsExports)
