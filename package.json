@@ -8,6 +8,7 @@
     "aws-amplify": "^3.3.21",
     "aws-amplify-react": "^4.2.25",
     "dotenv": "^8.2.0",
+    "encoding": "^0.1.13",
     "gatsby-source-graphql": "^2.14.0",
     "netlify-lambda": "^2.0.3",
     "node-fetch": "^2.6.1",
