@@ -54,9 +54,9 @@ function SubscriptionTest({ data }: any): ReactElement {
     if ("then" in client) {
       client.then(response => {
         console.log(response);
-        const netlifyBuildHooksUrl = process.env.NETLIFY_BUILD_HOOKS_URL;
+        const netlifyBuildHooksUrl = process.env.GATSBY_DOMAIN;
         if (netlifyBuildHooksUrl) {
-          return fetch(netlifyBuildHooksUrl, {
+          return fetch(`${netlifyBuildHooksUrl}/.netlify/functions/build-hook`, {
             method: 'POST',
           })
         }
