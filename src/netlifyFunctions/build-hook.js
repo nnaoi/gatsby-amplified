@@ -7,7 +7,7 @@ exports.handler = async (event, context) => {
   return fetch(API_ENDPOINT, { 
     method: 'POST',
   })
-    .then((response) => ({
+    .then(() => ({
       statusCode: 200,
       body: "Buld hook worked.",
     }))

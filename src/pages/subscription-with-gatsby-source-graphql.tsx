@@ -57,13 +57,13 @@ function SubscriptionTest({ data }: any): ReactElement {
         const netlifyBuildHooksUrl = process.env.GATSBY_DOMAIN;
         if (netlifyBuildHooksUrl) {
           return fetch(`${netlifyBuildHooksUrl}/.netlify/functions/build-hook`, {
-            method: 'POST',
+            method: 'GET',
           })
         }
 
         return Promise.reject("Build hooks url not found.")
       })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(response => console.log(response))
         .catch(e => console.error(e));
     }
