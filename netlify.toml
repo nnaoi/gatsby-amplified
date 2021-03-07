@@ -1,3 +1,6 @@
 [build]
   command = "npm install -g @aws-amplify/cli && sh headless_amplify_pull.sh && npm run build"
   functions = "public/functions"
+
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
